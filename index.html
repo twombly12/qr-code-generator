@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.js" integrity="sha512-hAz8pxm1kva4chZWPXQhGehvvlIj1Loka653sQXoYHNj4sgSukoR3ZKyHEOT7kFGVW17wUqD9CbKeviIJ2XFKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <span>QR Code Generator</span>
+    </header>
+    <main>
+        <h1>QR Code Generator</h1>
+        <p>QR Codes allow smartphone users to access your website simply and quickly.</p>
+        <p>Enter your URL below to generate a QR Code and download the image.</p>
+        <form id="qrForm">
+            <input id="url" type="url" placeholder="Enter a URL" />
+            <select id="size">
+                <option value="100">100x100</option>
+                <option value="200">200x200</option>
+                <option value="300" selected>300x300</option>
+                <option value="400">400x400</option>
+                <option value="500">500x500</option>
+                <option value="600">600x600</option>
+                <option value="700">700x700</option>
+            </select>
+            <button type="button">Generate QR Code</button>
+        </form>
+        <svg id="spinner" class="spinner" width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="rgb(200 200 200)">
+            <g fill="none" fill-rule="evenodd">
+                <g transform="translate(1 1)" stroke-width="2">
+                    <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
+                    <path d="M36 18c0-9.94-8.06-18-18-18">
+                        <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 18 18"
+                            to="360 18 18"
+                            dur="1s"
+                            repeatCount="indefinite"/>
+                    </path>
+                </g>
+            </g>
+        </svg>
+        <!-- Generated QR Code -->
+        <div>
+
+            <div id="qrcode"></div>
+        </div>
+    </main>
+</body>
+
+</html>
