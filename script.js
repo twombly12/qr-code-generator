@@ -82,9 +82,19 @@ const onGenerateSubmit = (e) => {
                     return (Math.min((maxW / imgW), (maxH / imgH)));
                 }
                 /-------------------------- Add White Background for Logo --------------------------/
+                let rectangleX = (size / 2) - (w * sizer / 2);
+                let rectangleY = (size / 2) - (h * sizer / 2);
+                let rectangleW = w * sizer;
+                let rectangleH = h * sizer;
+
                 ctx.beginPath();
                 ctx.fillStyle = "#FFFFFF";
-                ctx.fillRect((size / 2) - (w * sizer / 2), (size / 2) - (h * sizer / 2), w * sizer, h * sizer);
+                ctx.fillRect(rectangleX, rectangleY, rectangleW, rectangleH);
+
+                ctx.lineWidth = "6";
+                ctx.strokeStyle = "black";
+                ctx.rect(rectangleX - 3, rectangleY - 3, rectangleW + 6, rectangleH + 6);
+                ctx.stroke();
 
 
                 /-------------------------- Add Logo  to Canvas --------------------------/
