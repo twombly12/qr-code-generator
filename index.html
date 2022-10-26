@@ -8,6 +8,7 @@
     <title>QR Code Generator</title>
     <script src="script.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/merge-images"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -51,10 +52,10 @@
             <!-- Generated QR Code -->
             <div id="qr-content">
                 <div id="qrcode"></div>
-                <div id="uploaded-img" class="qr-background-img"></div>
+                <canvas id="uploaded-img" class="qr-background-img"></canvas>
+                <div id="save-btn"></div>
             </div>
         </div>
-
     </main>
 </body>
 

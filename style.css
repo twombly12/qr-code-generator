@@ -7,10 +7,14 @@
 }
 
 .qr-background-img {
-    height: 50px;
+    /* height: 50px;
     width: 50px;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    background-color: #FFF;
+    background-color: #FFF; */
+}
+
+#qrcode {
+    display: none;
 }
