@@ -1,9 +1,8 @@
-/-------------------------- Get Form Values --------------------------/
+/-------------------------- Get Page Elements --------------------------/
 const form = document.querySelector('#generate-form');
 const qrContent = document.querySelector("#qr-content")
 const qrGenerated = document.querySelector('#qrcode');
 const save = document.querySelector('#save-btn');
-
 
 /-------------------------- Show Spinner --------------------------/
 const showSpinner = () => {
@@ -18,11 +17,13 @@ const hideSpinner = () => {
 
 
 /-------------------------- Generate QR Code --------------------------/
-const generateQRCode = (url, size) => {
+const generateQRCode = (url, size, dark, light) => {
     const qrcode = new QRCode('qrcode', {
         text: url,
         width: size,
         height: size,
+        colorDark: dark,
+        colorLight: light,
     });
 };
 
@@ -51,6 +52,8 @@ const onGenerateSubmit = (e) => {
 
     const url = document.querySelector('#url-input').value
     const size = document.querySelector('#size-input').value
+    const light = document.querySelector('#color-background-input').value
+    const dark = document.querySelector('#color-pattern-input').value
 
     if (url === '') {
         alert('Please enter a URL')
@@ -58,7 +61,7 @@ const onGenerateSubmit = (e) => {
         showSpinner()
         setTimeout(() => {
             hideSpinner();
-            generateQRCode(url, size)
+            generateQRCode(url, size, dark, light)
             setTimeout(() => {
                 /-------------------------- Create Canvas --------------------------/
                 let canvas = document.querySelector("#uploaded-img");
@@ -81,7 +84,7 @@ const onGenerateSubmit = (e) => {
                 function scalePreserveAspectRatio(imgW, imgH, maxW, maxH) {
                     return (Math.min((maxW / imgW), (maxH / imgH)));
                 }
-                /-------------------------- Add White Background for Logo --------------------------/
+                /-------------------------- Add White Background with Stroke for Logo --------------------------/
                 let rectangleX = (size / 2) - (w * sizer / 2);
                 let rectangleY = (size / 2) - (h * sizer / 2);
                 let rectangleW = w * sizer;
@@ -92,10 +95,9 @@ const onGenerateSubmit = (e) => {
                 ctx.fillRect(rectangleX, rectangleY, rectangleW, rectangleH);
 
                 ctx.lineWidth = "6";
-                ctx.strokeStyle = "black";
+                ctx.strokeStyle = light;
                 ctx.rect(rectangleX - 3, rectangleY - 3, rectangleW + 6, rectangleH + 6);
                 ctx.stroke();
-
 
                 /-------------------------- Add Logo  to Canvas --------------------------/
                 ctx.drawImage(imageUrl, 0, 0, w, h, (size / 2) - (w * sizer / 2), (size / 2) - (h * sizer / 2), w * sizer, h * sizer);

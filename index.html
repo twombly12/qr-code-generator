@@ -22,7 +22,9 @@
         <p>Enter your URL below to generate a QR Code and download the image.</p>
         <form id="qrForm">
             <input id="url-input" type="url" placeholder="Enter a URL" />
+
             <input id="image-input" type="file" accept="image/*" placeholder="Upload your Logo">
+
             <select id="size-input">
                 <option value="100">100x100</option>
                 <option value="200">200x200</option>
@@ -30,6 +32,13 @@
                 <option value="400">400x400</option>
                 <option value="500">500x500</option>
             </select>
+
+            <input id="color-background-input" type="color" value="#000000" />
+            <label for="background">Background Color</label>
+
+            <input id="color-pattern-input" type="color" value="#FFFFFF" />
+            <label for="pattern">Pattern Color</label>
+
             <button type="submit">Generate QR Code</button>
         </form>
         <div class="generated">
