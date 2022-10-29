@@ -17,13 +17,14 @@ const hideSpinner = () => {
 
 
 /-------------------------- Generate QR Code --------------------------/
-const generateQRCode = (url, size, dark, light) => {
+// const generateQRCode = (url, size, dark, light) => {
+const generateQRCode = (url, size) => {
     const qrcode = new QRCode('qrcode', {
         text: url,
         width: size,
         height: size,
-        colorDark: dark,
-        colorLight: light,
+        // colorDark: dark,
+        // colorLight: light,
     });
 };
 
@@ -52,8 +53,8 @@ const onGenerateSubmit = (e) => {
 
     const url = document.querySelector('#url-input').value
     const size = document.querySelector('#size-input').value
-    const light = document.querySelector('#color-background-input').value
-    const dark = document.querySelector('#color-pattern-input').value
+        // const light = document.querySelector('#color-background-input').value
+        // const dark = document.querySelector('#color-pattern-input').value
 
     if (url === '') {
         alert('Please enter a URL')
@@ -61,7 +62,8 @@ const onGenerateSubmit = (e) => {
         showSpinner()
         setTimeout(() => {
             hideSpinner();
-            generateQRCode(url, size, dark, light)
+            // generateQRCode(url, size, dark, light)
+            generateQRCode(url, size)
             setTimeout(() => {
                 /-------------------------- Create Canvas --------------------------/
                 let canvas = document.querySelector("#uploaded-img");
@@ -79,7 +81,7 @@ const onGenerateSubmit = (e) => {
                 /-------------------------- Resize Logo for Canvas --------------------------/
                 let w = imageUrl.width;
                 let h = imageUrl.height;
-                var sizer = scalePreserveAspectRatio(w, h, canvas.width * 0.4, canvas.height * 0.4);
+                var sizer = scalePreserveAspectRatio(w, h, canvas.width * 0.35, canvas.height * 0.35);
 
                 function scalePreserveAspectRatio(imgW, imgH, maxW, maxH) {
                     return (Math.min((maxW / imgW), (maxH / imgH)));
@@ -95,7 +97,8 @@ const onGenerateSubmit = (e) => {
                 ctx.fillRect(rectangleX, rectangleY, rectangleW, rectangleH);
 
                 ctx.lineWidth = "6";
-                ctx.strokeStyle = light;
+                // ctx.strokeStyle = light;
+                ctx.strokeStyle = '#000000';
                 ctx.rect(rectangleX - 3, rectangleY - 3, rectangleW + 6, rectangleH + 6);
                 ctx.stroke();
 
