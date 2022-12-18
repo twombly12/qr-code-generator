@@ -5,3 +5,70 @@
 #qrcode {
     display: none;
 }
+
+#qr-content {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#qrForm {
+    position: relative;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+#qrForm>:last-child {
+    margin-top: 40px;
+}
+
+#qrForm input,
+#qrForm label.filewrap,
+#qrForm select {
+    height: 44px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4em;
+    text-transform: none !important;
+    font-weight: 400;
+    border: 1px solid rgba(70, 90, 126, 0.4);
+}
+
+.filewrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(232, 240, 254);
+    color: #000;
+}
+
+.filewrap:hover {
+    cursor: pointer;
+}
+
+input[type="file"] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    display: none;
+}
+
+.generated {
+    height: 100%;
+}
+
+.generated>div {
+    height: 100%;
+}

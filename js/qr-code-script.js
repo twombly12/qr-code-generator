@@ -99,7 +99,7 @@ const onGenerateSubmit = (e) => {
                 ctx.lineWidth = "6";
                 // ctx.strokeStyle = light;
                 ctx.strokeStyle = '#000000';
-                ctx.rect(rectangleX - 3, rectangleY - 3, rectangleW + 6, rectangleH + 6);
+                ctx.rect(rectangleX - 3, rectangleY - 2.5, rectangleW + 5, rectangleH + 5);
                 ctx.stroke();
 
                 /-------------------------- Add Logo  to Canvas --------------------------/
@@ -117,6 +117,9 @@ const onGenerateSubmit = (e) => {
 const clearUI = () => {
     qrGenerated.innerHTML = "";
     save.innerHTML = "";
+    const canvas = document.querySelector("#uploaded-img");
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 
@@ -124,7 +127,7 @@ const clearUI = () => {
 const createSaveBtn = (saveUrl) => {
     const link = document.createElement('a');
     link.id = 'save-link';
-    link.classList = 'save-btn';
+    link.classList = 'button';
     link.href = document.querySelector('#uploaded-img').toDataURL('image/png');
     link.download = 'qrcode';
     link.innerHTML = 'Save Image';
@@ -135,3 +138,9 @@ hideSpinner()
 
 
 document.querySelector("#qrForm button").addEventListener('click', onGenerateSubmit)
+
+
+
+function uploadFile(target) {
+    document.getElementById("file-name").innerHTML = target.files[0].name;
+}

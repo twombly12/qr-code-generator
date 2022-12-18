@@ -9,8 +9,9 @@
     <!-- <script src="script.js" defer></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/merge-images"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/qr-code-style.css">
     <script src="../js/content-elements.js"></script>
     <script>
         head()
@@ -34,21 +35,23 @@
         <div class="stripe sub-landing"></div>
         <main>
             <section class="section top">
-                <div class="text-image two-column small-image">
-                    <div>
-                        <p>QR Codes allow smartphone users to access your website simply and quickly.</p>
-                        <p>Enter your URL below to generate a QR Code and download the image.</p>
-                        <form id="qrForm" class="form-container shadowed-box white-background">
+                <h2 class="center-text text-underline">Get <span class="dark-color-text"> Started</span> today</h2>
+                <p class="center-text">QR Codes allow smartphone users to access your website simply and quickly.</p>
+                <div class=" text-image two-column small-image section top-smaller bottom column-circle">
+                    <div class="shadowed-box white-background">
+                        <p class="center-text">Enter your URL below to generate a QR Code and download the image.</p>
+                        <form id="qrForm" class="form-container">
                             <input id="url-input" type="url" placeholder="Enter a URL" />
+                            <label id="file-name" class="filewrap" for="image-input">Upload Your Logo</label>
+                            <input id="image-input" type="file" accept="image/*" placeholder="Upload your Logo" onchange='uploadFile(this)'>
 
-                            <input id="image-input" type="file" accept="image/*" placeholder="Upload your Logo">
-
+                            <label for="size-input">Select a Size</label>
                             <select id="size-input">
                                 <option value="100">100x100</option>
                                 <option value="200">200x200</option>
                                 <option value="300" selected>300x300</option>
-                                <option value="400">400x400</option>
-                                <option value="500">500x500</option>
+                                <!-- <option value="400">400x400</option>
+                                <option value="500">500x500</option> -->
                             </select>
 
                             <!-- <input id="color-background-input" type="color" value="#000000" />
@@ -57,39 +60,40 @@
                             <input id="color-pattern-input" type="color" value="#FFFFFF" />
                             <label for="pattern">Pattern Color</label> -->
 
-                            <button class="button " type="submit">Generate QR Code</button>
+                            <button class="button" type="submit">Generate QR Code</button>
                         </form>
+
                     </div>
-                    <div>
-                        <h2 class="center-text text-underline">Get <span class="dark-color-text"> Started</span> today</h2>
-                        <img src="assets/AdobeStock_355679997_Preview.jpg" />
+                    <div class="shadowed-box white-background">
+
+                        <div class="generated">
+                            <svg id="spinner" class="spinner" width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="rgb(200 200 200)">
+                                <g fill="none" fill-rule="evenodd">
+                                <g transform="translate(1 1)" stroke-width="2">
+                                    <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
+                                    <path d="M36 18c0-9.94-8.06-18-18-18">
+                                        <animateTransform
+                                            attributeName="transform"
+                                            type="rotate"
+                                            from="0 18 18"
+                                            to="360 18 18"
+                                            dur="1s"
+                                                repeatCount="indefinite"/>
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <!-- Generated QR Code -->
+                            <div id="qr-content">
+                                <div id="qrcode"></div>
+                                <canvas id="uploaded-img" class="qr-background-img"></canvas>
+                                <div id="save-btn"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="generated">
-                    <svg id="spinner" class="spinner" width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="rgb(200 200 200)">
-                <g fill="none" fill-rule="evenodd">
-                    <g transform="translate(1 1)" stroke-width="2">
-                        <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
-                        <path d="M36 18c0-9.94-8.06-18-18-18">
-                            <animateTransform
-                                attributeName="transform"
-                                type="rotate"
-                                from="0 18 18"
-                                to="360 18 18"
-                                dur="1s"
-                                repeatCount="indefinite"/>
-                        </path>
-                    </g>
-                </g>
-            </svg>
-                    <!-- Generated QR Code -->
-                    <div id="qr-content">
-                        <div id="qrcode"></div>
-                        <canvas id="uploaded-img" class="qr-background-img"></canvas>
-                        <div id="save-btn"></div>
-                    </div>
-                </div>
+
             </section>
         </main>
         <footer>
